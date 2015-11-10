@@ -1,0 +1,15 @@
+Configurar el directorio local
+Set up Git on your machine if you haven't already.
+
+mkdir /path/to/your/project
+cd /path/to/your/project
+git init
+git remote add origin https://wilderhg@bitbucket.org/wilderhg/sistemabotica.git
+
+
+Crea tu primer ficero, haz un commit y luego un push.
+echo "wilder Hernández García" >> contributors.txt
+git add contributors.txt
+git commit -m 'Initial commit with contributors'
+git push -u origin master
+
