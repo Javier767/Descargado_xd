@@ -1,0 +1,99 @@
+{% extends "laboratorios/base_laboratorios.html" %}
+{% block title %}Productos{% endblock title %}
+{% block content %}
+{% include "nav.html" %}
+{% block producto %}  
+
+
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
+    <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li class="active">Clientes</li>
+      </ol>
+    </div><!--/.row-->
+    
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Laboratorios</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="page-header">
+                      <!-- crear nuevo cliente-->
+                     <a class="btn btn-primary pull-right" href="{% url 'laboratorios_app:create_laboratorios'  %}">
+                          <span class="glyphicon glyphicon-plus"></span> Crear un Nuevo Laboratorio
+                      </a> <!-- end crear nuevo cliente  -->                
+                        <!-- buscar-->
+                         <form action= "." method="GET">
+                             <label for="q">Buscar</label>
+                             <input id="aut" name = "q" autofocus type="search" placeholder="nombre del cliente" value="{% if q %}{{ q }}{% else %}{% endif %}" >
+
+                             <input type="submit" class="btn btn-primary "  value="Buscar">
+                          </form>     
+                          <!-- end buscar-->                        
+                 </div><!-- page-header -->             
+              <div class="row">
+                  <div class="col-md-12">
+                      <table class="table table-striped table-hover ">
+                        <thead>
+                            <tr>
+                             <th>N°</th>
+                              <th>Codigo</th>                       
+                              <th>Nombre</th> 
+                              <th>Sanitario</th>                              
+                              <th>Autorizacion</th>                       
+                           </tr>
+                        </thead>
+                      <tbody> 
+                      {% for l in laboratorios %}          
+
+                          <tr> 
+                              <td>{{ forloop.counter}}</td>
+                              <td>{{ l.dni }}</td>
+                              <td>{{ l.nombre }} </td> 
+                              <td>{{ l.apellidos }}</td>                              
+                              <td>{{ l.telefono}}</td>                      
+                              <td class="text-right">
+                                  {% if user.is_authenticated %}
+                                  <a href="{% url 'laboratorios_app:detalle_laboratorios' l.id %} " class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                  {% endif %}
+
+                                  <a href="{% url 'laboratorios_app:actualizar_laboratorios' l.id  %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                  <a href="{% url 'laboratorios_app:eliminar_laboratorios' l.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a> 
+                              </td>
+                          </tr>
+                      {% endfor %}
+                          
+                          </tbody>
+                      </table>
+                  </div><!-- col-md-12 -->
+              </div><!-- /row -->
+            </div>
+       
+            <nav>
+                {% if is_paginated %}
+                    <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        {% endif %}
+
+                        {% for i in paginator.page_range %}
+                            <li {% if page_obj.number == i %} class="active" {% endif %}>
+                                <a href="?page={{i}}">{{ i }}</a>
+                            </li>
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </nav>
+      </div>
+    </div>
+        
+  </div><!--/.row-->
+    {% endblock producto %}
+    {% endblock content %}

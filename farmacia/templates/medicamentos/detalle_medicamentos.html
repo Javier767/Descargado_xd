@@ -1,0 +1,81 @@
+{% extends "medicamentos/base_medicamentos.html" %}
+{% block title %}{{title}}{% endblock title %}
+{% block content %}
+{% include "nav.html" %}
+{% block producto %}   
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
+<div class="row"> 
+			<div class="col-xs-12 col-sm-10">
+			<!-- jumbotron-->
+				<div class="jumbotron">	
+					<a href="{% url 'medicamentos_app:lista_medicamentos' %}" class="btn btn-success">
+					    <span class="glyphicon glyphicon-chevron-left"></span> Regresar
+					</a>
+					<table class="table table-striped table table-hover ">
+	                        <thead>
+	                            <tr>
+	                             <th><h2> Medicamento: {{ object.nombre }}</h2></th>           
+	                           </tr>
+	                        </thead>
+	                      <tbody> 
+	                          <tr class="success"> 
+	                          	  <td><strong>Codigo:</strong></td>                           
+	                              <td>{{ object.codigo }}</td>
+	                          </tr>
+	                          <tr class="success">
+	                          	  <td><strong>Categoria:</strong></td>
+	                              <td>{{ object.categoria }} </td> 
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Tipo:</strong></td>
+	                              <td>{{ object.tipo }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Nombre:</strong></td>
+	                              <td>{{ object.nombre }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Componente:</strong></td>
+	                              <td>{{ object.componente }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Concentración:</strong></td>
+	                              <td>{{ object.concentracion }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Sanitario:</strong></td>
+	                              <td>{{ object.sanitario }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Fecha Expiración:</strong> </td>
+	                              <td>{{ object.fecha_expiracion}}</td>                  
+	                           </tr> 
+	                           <tr class="success">
+	                           	  <td><strong>Fecha Producción:</strong> </td>
+	                              <td>{{ object.fecha_produccion}}</td>                  
+	                           </tr> 
+	                           <tr class="success">
+	                           	  <td><strong>Descripción:</strong> </td>
+	                              <td>{{ object.descripcion}}</td>                  
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Precio Compra:</strong> </td>
+	                              <td>{{ object.precio_Compra}}</td>                  
+	                           </tr>
+
+	                           <tr class="success">
+	                           	  <td><strong>Precio Venta:</strong> </td>
+	                              <td>{{ object.precio_venta}}</td>                  
+	                           </tr> 
+	                           <tr class="success">
+	                           	  <td><strong>Stock:</strong> </td>
+	                              <td>{{ object.stock}}</td>                  
+	                           </tr> 
+
+
+	                       </tbody>
+	                </table>
+	            </div>	<!-- end jumbotron-->				
+		</div>	
+{% endblock producto %}
+{% endblock content %}
