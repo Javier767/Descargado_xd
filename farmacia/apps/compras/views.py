@@ -103,17 +103,17 @@ def write_pdf(template_src, context_dict):
     return http.HttpResponse('Ocurrio un error al genera el reporte %s' % cgi.escape(html))
 
 
-def generar_pdf(request):
+def generar_reporte_lista_compras(request):
     if request.method == "POST":
         formbusqueda = RangoForm(request.POST)
         if formbusqueda.is_valid():
             fecha_in = formbusqueda.cleaned_data['fecha_i']
             fecha_fi = formbusqueda.cleaned_data['fecha_f']
             rango = Cabecera.objects.filter(fecha__range=(fecha_in, fecha_fi)).order_by('distribuidor')
-            return write_pdf ('compras/pdf.html',{'pagesize' : 'legal', 'rango' : rango})
+            return write_pdf ('compras/reporte_detalle_lista_compras.html',{'pagesize' : 'legal', 'rango' : rango})
             #return render_to_response ('empleados/test.html',{'rango':rango},context_instance=RequestContext(request))
         else:
             error = "Hay un error en las fechas proporcionadas"
-            return render_to_response('compras/reporte_pdf.html', {'error': error}, context_instance=RequestContext(request))
+            return render_to_response('compras/rango_fecha_reporte_lista_compra.html', {'error': error}, context_instance=RequestContext(request))
 
-    return render_to_response('compras/reporte_pdf.html', {'rangoform': RangoForm()}, context_instance=RequestContext(request))
+    return render_to_response('compras/rango_fecha_reporte_lista_compra.html', {'rangoform': RangoForm()}, context_instance=RequestContext(request))
