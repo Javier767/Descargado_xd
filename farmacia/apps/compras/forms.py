@@ -15,4 +15,7 @@ class TodoItemForm(forms.ModelForm):
 				'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),
 				
 			}
-	
+
+class RangoForm (forms.Form):
+    fecha_i = forms.DateField(widget = forms.TextInput(attrs={'class':'form-control', 'id':'datepicker'}))
+    fecha_f = forms.DateField(widget = forms.TextInput(attrs={'class':'form-control', 'id':'datepicker2'}))
