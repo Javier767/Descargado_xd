@@ -26,8 +26,7 @@
                         <!-- buscar-->
                          <form action= "." method="GET">
                              <label for="q">Buscar</label>
-                             <input id="aut" name = "q" autofocus type="search" placeholder="nombre del cliente" value="{% if q %}{{ q }}{% else %}{% endif %}" >
-
+                             <input id="aut" name = "q" autofocus type="search" placeholder="codigo y distribuidor" value="{% if q %}{{ q }}{% else %}{% endif %}" >
                              <input type="submit" class="btn btn-primary "  value="Buscar">
                           </form>     
                           <!-- end buscar-->                        
@@ -57,7 +56,6 @@
                               </td>
                           </tr>
                       {% endfor %}
-
                           
                           </tbody>
                       </table>

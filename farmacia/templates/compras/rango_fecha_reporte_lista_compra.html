@@ -10,8 +10,7 @@
           <li class="active">Compras</li>
         </ol>
       </div><!--/.row-->
-    
-    <div class="row">
+        <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-primary">
               <div class="panel-heading">
@@ -31,12 +30,11 @@
                         <p>Ingrese fecha fin: </p>
                         {{ rangoform.fecha_f }}<br/><br/>
                         <button type="submit" class="btn btn-primary"><span class="icon_agenda"></span>Generar Reporte</button>
-                    </form>
+                  </form>
                   </div><!-- col-md-6 -->
                   <div class="col-md-6">
                   <form class="well" action="." method="POST">                    
-                       <p>OBSERVACIONES</p>
-                        
+                       <p>OBSERVACIONES</p>                        
                     </form>
                   </div><!-- col-md-6 -->
               </div><!-- /row -->
@@ -47,7 +45,6 @@
   </div><!--/.row-->
     {% endblock producto %}
     {% endblock content %}
-
 {% block scripts %}
 <script>
     $(function() {

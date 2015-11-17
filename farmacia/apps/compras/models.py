@@ -4,10 +4,21 @@ from apps.distribuidor.models import Distribuidor
 from apps.laboratorio.models import Laboratorio
 from django.db.models import signals
 from django.core.urlresolvers import reverse
+from django.conf import settings
+
+# Create your models here.
+class TimeStampModel(models.Model):
+
+	created = models.DateTimeField(auto_now_add=True)
+	modified = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		abstract = True
 
 
 
-class Cabecera(models.Model):
+class Cabecera(TimeStampModel):	
+	trabajador = models.ForeignKey(settings.AUTH_USER_MODEL)
 	codigo = models.CharField(max_length=10, unique=True)
 	distribuidor = models.ForeignKey(Distribuidor)
 	laboratorio = models.ForeignKey(Laboratorio)

@@ -40,20 +40,27 @@
 <table style="border:1px solid black;border-collapse:collapse;">
     <tr>
         <th style="border:1px solid black; padding: 2px;">items</th>
-        <th style="border:1px solid black; padding: 2px;">Código</th>
+        <th style="border:1px solid black; padding: 2px;">Nombre trabajador</th>
+        <th style="border:1px solid black; padding: 2px;">Código</th>        
         <th style="border:1px solid black; padding: 2px;">Distribuidor</th>
         <th style="border:1px solid black; padding: 2px;">Laboratorio</th>
-          <th style="border:1px solid black; padding: 2px;">Fecha</th>
+        <th style="border:1px solid black; padding: 2px;">Fecha</th>
+        
+
+
        
     </tr>
      {% for c in rango%}
             
         <tr>
          <td width= 380 style="border:1px solid black; padding: 3px;">{{forloop.counter}}</td>
+         <td style="border:1px solid black; padding: 3px;"><center>{{c.trabajador}}</center></td>
            <td width= 380 style="border:1px solid black; padding: 3px;">{{c.codigo}}</td>
-            <td width=220 style="border:1px solid black; padding: 3px;"><center>{{c.distribuidor}}</center></td>
+           <td width=220 style="border:1px solid black; padding: 3px;"><center>{{c.distribuidor}}</center></td>
+
             <td width =220 style="border:1px solid black; padding: 3px;"><center>{{c.laboratorio}}</center></td>
-            <td style="border:1px solid black; padding: 3px;"><center>{{c.fecha}}</center></td>
+            <td style="border:1px solid black; padding: 3px;"><center>{{c.fecha}}</center>
+            
            
         </tr>
     {% endfor %}

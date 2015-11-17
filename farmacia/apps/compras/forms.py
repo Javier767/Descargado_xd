@@ -5,6 +5,7 @@ from django import forms
 class TodoListForm(ModelForm):
   class Meta:
     model = Cabecera
+    exclude =('trabajador',)
 
 class TodoItemForm(forms.ModelForm):
 	class Meta:
