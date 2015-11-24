@@ -77,12 +77,7 @@
                                         <input type="number" id="disabledTextInput" name="telefono" class="form-control" value='{% if form.telefono.value %}{{ form.telefono.value }}{% endif %}' data-toggle="tooltip" data-placement="top" title='{{ form.telefono.errors.as_text}}' autofocus='true'>                                       
                                         </div>
                                   </div> 
-                                  <div class="form-group has-success has-feedback  {% if form.user.errors %} has-error {% endif %}">
-                                    <label class="control-label col-sm-3" for="inputSuccess3">{{ form.user.label_tag }}</label>
-                                    <div class="col-sm-6">  
-                                         {{ form.user}}              
-                                    </div>
-                                </div>                                   
+                                 
                             </div>                                                        
                         </div> <!--<div class="row"> -->
                         

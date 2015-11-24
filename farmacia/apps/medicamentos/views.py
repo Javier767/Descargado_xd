@@ -8,6 +8,17 @@ from .forms import MedicamentoForm, CrearmedicamentoForm
 from django.http import HttpResponse
 import csv
 
+
+#reporte pdf
+from django.http import HttpResponseRedirect
+from datetime import *
+import xhtml2pdf.pisa as pisa
+from django import http
+from django.template.loader import get_template
+from django.template import Context
+import cStringIO as StringIO
+import cgi
+
 class ListaMedicamentos(ListView):
 	context_object_name = 'medicamentos'
 	model = Medicamentos
@@ -78,3 +89,34 @@ def CargaAtenciones_ant(request):
                             registrant.stock
                             ])
 	return response
+
+
+def write_pdf(template_src, context_dict):
+    template = get_template(template_src)
+    context = Context(context_dict)
+    html  = template.render(context)
+    result = StringIO.StringIO()
+    pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result)
+    if not pdf.err:
+        return http.HttpResponse(result.getvalue(), \
+            content_type='application/pdf')
+    return http.HttpResponse('Ocurrio un error al genera el reporte %s' % cgi.escape(html))
+
+
+def generar_reporte_medicamentos(request):
+	 medicamentos = Medicamentos.objects.all()
+
+	 total_precio_compra = 0
+	 for expe in medicamentos:
+	 	total_precio_compra = (expe.stock*expe.precio_Compra) + total_precio_compra
+
+	 total_precio_venta = 0
+	 for expe in medicamentos:
+	 	total_precio_venta = (expe.stock*expe.precio_venta) + total_precio_venta
+
+	 ganancia = total_precio_venta - total_precio_compra
+
+
+	 return write_pdf ('medicamentos/reporte_detalle_medicamentos.html',{'pagesize' : 'legal',
+	 				   'medicamentos' : medicamentos, 'total_precio_compra': total_precio_compra,
+	 				   'total_precio_venta':total_precio_venta, 'ganancia': ganancia})

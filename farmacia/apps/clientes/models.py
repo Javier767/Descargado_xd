@@ -11,7 +11,6 @@ class Cliente(models.Model):
 	departamento = models.CharField(max_length=40)
 	direccion = models.CharField(max_length=100)
 	telefono = models.IntegerField(verbose_name='Telefono')
-	user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
 	def __unicode__(self):
 		return self.nombre

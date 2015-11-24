@@ -127,3 +127,5 @@ def generar_reporte_lista_compras(request):
             return render_to_response('compras/rango_fecha_reporte_lista_compra.html', {'error': error}, context_instance=RequestContext(request))
 
     return render_to_response('compras/rango_fecha_reporte_lista_compra.html', {'rangoform': RangoForm()}, context_instance=RequestContext(request))
+
+    
