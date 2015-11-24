@@ -8,7 +8,6 @@ class Ticket(models.Model):
     cliente = models.ForeignKey(Cliente, null=True, blank=True)    
     medicamento = models.ManyToManyField(Medicamentos, through='Detalle_Tickets')
     fecha = models.DateTimeField(auto_now_add=True)
-
     def __unicode__(self):
         return self.codigo
 

@@ -45,6 +45,7 @@ class CreateMedicamentos(CreateView):
 	model = Medicamentos
 	success_url = '/medicamentos'
 
+	
 
 class EliminarView(DeleteView):
 	model = Medicamentos

@@ -33,7 +33,7 @@ def realizar_compra(request):
             for form in self.forms:
                 form.empty_permitted = False
 
-    TodoItemFormSet = formset_factory(TodoItemForm, max_num=10, formset=RequiredFormSet)
+    TodoItemFormSet = formset_factory(TodoItemForm, max_num=100, formset=RequiredFormSet)
 
     if request.method == 'POST': # If the form has been submitted...
         todo_list_form = TodoListForm(request.POST) # A form bound to the POST data
