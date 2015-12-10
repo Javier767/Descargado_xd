@@ -1,14 +1,11 @@
 from django.contrib import admin
-
-from apps.ventas.models import Detalle_Tickets, Ticket
-
-
-class Detalle_TicketsInline(admin.TabularInline):
-    model = Detalle_Tickets
-
-class TicketAdmin(admin.ModelAdmin):
-    inlines = (Detalle_TicketsInline,)
-    #search_fields = ('fecha', '')
+from apps.ventas.models import todo_item, Cabecera_Venta
 
 
-admin.site.register(Ticket, TicketAdmin)	
+class medicamento_ventaInline(admin.TabularInline):
+    model = todo_item
+
+class Detalle_VentaAdmin(admin.ModelAdmin):
+    inlines = (medicamento_ventaInline,)
+
+admin.site.register(Cabecera_Venta, Detalle_VentaAdmin)

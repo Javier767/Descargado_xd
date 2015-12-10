@@ -27,6 +27,7 @@ LOCAL_APPS = (
     'apps.distribuidor',  
     'apps.users',
     'apps.laboratorio',
+    'apps.inline',
    )
 
 THIRD_PARTY_APPS = (

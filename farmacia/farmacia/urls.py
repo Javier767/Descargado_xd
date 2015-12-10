@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^', include('apps.medicamentos.urls', namespace="medicamentos_app")),
 
     #agregar ventas.
-    url(r'^', include('apps.ventas.urls', namespace="ventas_app")),
+    url(r'^ventas/', include('apps.ventas.urls', namespace="ventas_app")),
 
     #login-users
     url(r'^', include('apps.users.urls',  namespace='users_app')),
@@ -24,6 +24,8 @@ urlpatterns = patterns('',
     url(r'^', include('apps.compras.urls',  namespace='compras_app')),
        #compras
     url(r'^', include('apps.laboratorio.urls',  namespace='laboratorios_app')),
+
+       url(r'^todolist/', include('apps.inline.urls',  namespace='todolist')),
 
 )
 
