@@ -3,8 +3,8 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView, UpdateView, CreateView, DeleteView
-from .models import Medicamentos
-from .forms import MedicamentoForm, CrearmedicamentoForm
+from .models import Medicamentos, Presentacion
+from .forms import MedicamentoForm, CrearmedicamentoForm, CrearpresentacionForm
 from django.http import HttpResponse
 import csv
 
@@ -23,47 +23,27 @@ class ListaMedicamentos(ListView):
 	context_object_name = 'medicamentos'
 	model = Medicamentos
 	template_name = 'medicamentos/lista_medicamentos.html'
-	paginate_by = 10
-
-	def get_queryset(self):
-		queryset = super(ListaMedicamentos, self).get_queryset()
-		# búsqueda
-		q = self.request.GET.get('q', '')
-		if q:
-			queryset = queryset.filter(
-				Q(nombre__icontains=q) |
-				Q(descripcion__icontains=q)
-
-				)
-		return queryset
-
 
 class DetalleView(DetailView):
 	model = Medicamentos
 	template_name = 'medicamentos/detalle_medicamentos.html'
 
-
 class ActualizarView(UpdateView):
 	form_class = MedicamentoForm
-	template_name = 'medicamentos/editar_medicamentos.html'
+	template_name = 'medicamentos/create_update_medicamentos.html'
 	model = Medicamentos
 	success_url='/medicamentos'
 
-
 class CreateMedicamentos(CreateView):
 	form_class = CrearmedicamentoForm
-	template_name = 'medicamentos/create_medicamentos.html'
+	template_name = 'medicamentos/create_update_medicamentos.html'
 	model = Medicamentos
 	success_url = '/medicamentos'
-
-	
 
 class EliminarView(DeleteView):
 	model = Medicamentos
 	success_url='/medicamentos'
 	template_name = 'medicamentos/eliminar_medicamento.html'
-
-
 
 
 def CargaAtenciones_ant(request):
@@ -120,3 +100,11 @@ def generar_reporte_medicamentos(request):
 	 return write_pdf ('medicamentos/reporte_detalle_medicamentos.html',{'pagesize' : 'legal',
 	 				   'medicamentos' : medicamentos, 'total_precio_compra': total_precio_compra,
 	 				   'total_precio_venta':total_precio_venta, 'ganancia': ganancia})
+
+#Presentación
+
+class CreatePresentacion(CreateView):
+	form_class = CrearpresentacionForm
+	template_name = 'medicamentos/create_update_presentacion.html'
+	model = Presentacion
+	success_url = '/medicamentos/agregar'

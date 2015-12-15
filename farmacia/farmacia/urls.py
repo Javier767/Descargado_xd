@@ -25,7 +25,10 @@ urlpatterns = patterns('',
        #compras
     url(r'^', include('apps.laboratorio.urls',  namespace='laboratorios_app')),
 
-       url(r'^todolist/', include('apps.inline.urls',  namespace='todolist')),
+     url(r'^todolist/', include('apps.inline.urls',  namespace='todolist')),
+
+       #factura
+     url(r'^', include('apps.factura.urls',  namespace='factura_app')),
 
 )
 

@@ -67,7 +67,6 @@ def realizar_compra(request):
 
 class ListaCompras(ListView):
     template_name = 'compras/lista_compras.html'
-    paginate_by = 6
     model = Cabecera
 
     def get_context_data(self, **kwargs):
@@ -76,17 +75,6 @@ class ListaCompras(ListView):
         context['compras'] = context['events']
         context['paginate_by']=context['events']
         return context
-
-    def get_queryset(self):
-        queryset = super(ListaCompras, self).get_queryset()
-        # búsqueda
-        q = self.request.GET.get('q', '')
-        if q:
-            queryset = queryset.filter(
-                Q(codigo__icontains=q) |
-                Q(distribuidor__icontains=q)
-                )
-        return queryset
 
 
 def reportecompras(request, pk):
@@ -127,5 +115,3 @@ def generar_reporte_lista_compras(request):
             return render_to_response('compras/rango_fecha_reporte_lista_compra.html', {'error': error}, context_instance=RequestContext(request))
 
     return render_to_response('compras/rango_fecha_reporte_lista_compra.html', {'rangoform': RangoForm()}, context_instance=RequestContext(request))
-
-    

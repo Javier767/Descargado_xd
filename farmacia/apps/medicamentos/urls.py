@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from .views import ListaMedicamentos, DetalleView,ActualizarView, CreateMedicamentos, EliminarView,CargaAtenciones_ant
+from .views import ListaMedicamentos, DetalleView,ActualizarView, CreateMedicamentos, EliminarView,CargaAtenciones_ant, CreatePresentacion
 
 urlpatterns = patterns('',
 
@@ -10,4 +10,6 @@ urlpatterns = patterns('',
 	url(r'^medicamentos/eliminar/(?P<pk>\d+)/$', EliminarView.as_view(), name="eliminar_medicamentos"), 
 	url(r'^expatenciones/$', 'apps.medicamentos.views.CargaAtenciones_ant',name='xds'),
 	url(r'^medicamentos/reporte/$', 'apps.medicamentos.views.generar_reporte_medicamentos',name='reporte'),
+	#presentacion
+	url(r'^medicamentos/presentacion$', CreatePresentacion.as_view(), name='create_presentacion'),
 	)

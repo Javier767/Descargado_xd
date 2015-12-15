@@ -20,6 +20,7 @@ DJANGO_APPS = (
     )
 
 LOCAL_APPS = (
+    'django.contrib.humanize',
     'apps.clientes',
     'apps.ventas',
     'apps.medicamentos',
@@ -28,6 +29,7 @@ LOCAL_APPS = (
     'apps.users',
     'apps.laboratorio',
     'apps.inline',
+    'apps.factura',
    )
 
 THIRD_PARTY_APPS = (

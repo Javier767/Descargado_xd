@@ -1,8 +1,39 @@
-{% extends "compras/base_compras.html" %}
+{% extends "medicamentos/base_medicamentos1.html" %}
 {% block title %}Productos{% endblock title %}
 {% block content %}
 {% include "nav.html" %}
-{% block producto %}  
+{% block producto %}    
+    <div class="wrapper"> 
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>            
+            Compras
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">Data tables</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">
+                      <a href="{% url 'compras_app:lista_compras' %}" class="btn btn-success">
+                      Regresar</a>
+                    </h3>
+                    <div class="box-tools pull-right">
+                      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div><!-- /.box-tools -->
+                  </div><!-- /.box-header -->
+                  <div class="box-body">
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 
@@ -95,44 +126,37 @@ $(document).ready(function() {
 });
 </script>
 
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
-    <div class="row">
-      <ol class="breadcrumb">
-        <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li class="active">Clientes</li>
-      </ol>
-    </div><!--/.row-->    
-    <div class="row">
-      <div class="col-lg-12">
-        <form class="form-horizontal" method="post">{% csrf_token %}  
-          <div class="section">
-            {{ todo_list_form.as_p }}
-          </div>  
-          <div class="panel panel-primary">
-            <div class="panel-heading">Agregar Medicamentos</div>
-            <div class="panel-body"> 
-              <div class="row">    
-                <h2>Todo Items</h2>
-                {{ todo_item_formset.management_form }}
-                {% for form in todo_item_formset.forms %}
-                  <div class="item col-sm-2 color1">
-                      {{ form.as_p}}
-                      <p style=""><a class="delete" href="#">ELiminar</a></p>
-                  </div>
+                      <form class="form-horizontal" method="post">{% csrf_token %}  
+                        <div class="section">
+                          {{ todo_list_form.as_p }}
+                        </div>  
+                        
+                          <div class="panel-body"> 
+                            <div class="row">    
+                              <h2>Agregar Medicamentos</h2>
+                              {{ todo_item_formset.management_form }}
+                              {% for form in todo_item_formset.forms %}
+                                <div class="item col-sm-2 color1">
+                                    {{ form.as_p}}
+                                    <p style=""><a class="delete" href="#">ELiminar</a></p>
+                                </div>
 
-                  </div>
-                {% endfor %}
-                </div>
-              
-            </div>
-          </div>
-          <p><a id="add" href="#">Agregar</a></p>
-              <input type="submit" value=" Realizar Compra " class="btn btn-sm btn-primary">
-      </form>
-      </div>
-    </div>
+                                </div>
+                              {% endfor %}
+                              </div>
 
-      </div>
-  </div><!--/.row-->
-{% endblock producto %}
+                        <p><a id="add" href="#">Agregar</a></p>
+                            <input type="submit" value=" Realizar Compra " class="btn btn-sm btn-primary">
+                    </form>
+
+           
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      <footer class="main-footer">
+{% include "footer.html" %}    
+ {% endblock producto %}
 {% endblock content %}
