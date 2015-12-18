@@ -12,9 +12,9 @@
             Clientes
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Data tables</li>
+            <li><a href="{% url 'users_app:home' %}"><i class="fa fa-dashboard"></i>Inicio</a></li>
+            <li><a href="{% url 'clientes_app:lista_clientes' %}">Clientes</a></li>
+            <li class="active">Nuevo Cliente</li>
           </ol>
         </section>
         <!-- Main content -->
@@ -24,9 +24,7 @@
         <div class="col-md-12">
           <div class="box box-info">
             <div class="box-header with-border">
-            <a href="{% url 'clientes_app:lista_clientes' %}" class="btn btn-success">
-                    <span class="glyphicon glyphicon-chevron-left"></span> Regresar
-            </a>              
+             
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box-tools -->

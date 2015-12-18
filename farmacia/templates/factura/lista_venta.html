@@ -9,12 +9,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>            
-            Compras
+            Ventas
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Data tables</li>
+            <li><a href="{% url 'users_app:home' %}"><i class="fa fa-dashboard"></i>Inicio</a></li>
+            <li class="active">Ventas</li>
+            <li><a href="{% url 'factura_app:factura_venta' %}">Nuevo</a></li>
+            
           </ol>
         </section>
 
@@ -53,7 +54,7 @@
                               <td>{{ c.numero }} </td>
                               <td>{{ c.cliente }}</td>
                               <td>{{c.vendedor}}</td>                               
-                              <td>{{ c.fecha}}</td> 
+                              <td>{{ c.fecha|date:'d/m/Y - H:i'}}</td> 
                               <td>{{ c.total}}</td>                      
                               <td class="text-right">
                                   {% if user.is_authenticated %}

@@ -12,9 +12,9 @@
             Medicamentos
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Data tables</li>
+            <li><a href="{% url 'users_app:home' %}"><i class="fa fa-dashboard"></i>Inicio</a></li>
+            <li  class="active">Medicamentos</li>
+            <li> <a href="{% url 'medicamentos_app:create_medicamentos'%}">Nuevo Medicamento</a> </li>
           </ol>
         </section>
 
@@ -44,7 +44,8 @@
                               <th>presentacion</th> 
                               <th>Tipo</th>                              
                               <th>Nombre</th> 
-                              <th>Precio</th> 
+                              <th>Precio</th>
+                              <th>Vencimiento Dias - Fecha</th> 
                               <th>Stock</th>
                                <th>Acciones</th>                        
                            </tr>
@@ -56,9 +57,24 @@
                               <td>{{ forloop.counter}}</td>                             
                               <td>{{ m.presentacion }} </td> 
                               <td>{{ m.tipo }}</td>                              
-                              <td>{{ m.nombre}}</td> 
+                              <td>{{ m.nombre|lower}}</td> 
                               <td>{{m.precio_venta}}</td>
-                              <td>{{ m.stock}}</td>                      
+                              {% if m.estadomedicamentos > 30 %}
+                                  <td><b style="color:green;">{{m.estadomedicamentos}} - {{m.fecha_expiracion|date:'d/m/Y' }}</b></td>
+                              {% elif m.estadomedicamentos <= 30 and m.estadomedicamentos > 0 %}
+                                  <td><b style="color:rgb(243, 156, 18);">{{m.estadomedicamentos}} - {{m.fecha_expiracion|date:'d/m/Y' }}</b></td>
+                              {% else %}
+                              <td><b style="color:red;">{{m.estadomedicamentos}} - {{m.fecha_expiracion|date:'d/m/Y' }}</b></td>
+                              {% endif %}   
+
+                              {% if m.stock > 0 and m.stock < 10 %}                             
+                              <td><b style="color:red;">{{ m.stock}}</b></td>   
+                              {% elif m.stock > 10 and m.stock < 50 %}
+                               <td><b style="color:rgb(243, 156, 18);">{{ m.stock}}</b></td>
+                               {% else %}
+                               <td><b style="color:green;">{{ m.stock}}</b></td>
+
+                              {% endif %}
                               <td class="text-right">
                                   <a href="{% url 'medicamentos_app:detalle_medicamentos' m.id %} " class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
                                   <a href="{% url 'medicamentos_app:actualizar_medicamentos' m.id  %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>

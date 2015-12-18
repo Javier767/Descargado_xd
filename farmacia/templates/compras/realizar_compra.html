@@ -12,9 +12,10 @@
             Compras
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Data tables</li>
+            <li><a href="{% url 'users_app:home' %}"><i class="fa fa-dashboard"></i>Inicio</a></li>
+            <li><a href="{% url 'compras_app:lista_compras' %}">Compras</a></li>
+            <li>Nuevo</li>
+            
           </ol>
         </section>
 

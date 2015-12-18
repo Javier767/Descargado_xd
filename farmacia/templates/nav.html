@@ -5,7 +5,7 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>A</b>LT</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Admin</b>LTE</span>
+          <span class="logo-lg"><b>Farma</b>Salud</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -203,38 +203,28 @@
                 </ul>
               </li>
               <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
+               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ MEDIA_URL }}{{ user.avatar }}" class="user-image" alt="User Image"> 
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <img src="{{ MEDIA_URL }}{{ user.avatar }}" class="img-circle" alt="User Image" height="20" width="20" > 
+                  <span class="hidden-xs">{{ user.username|capfirst }} {{ user.last_name|capfirst }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="{{ MEDIA_URL }}{{ user.avatar }}" class="user-image" alt="User Image"> 
-                    <p>
-                      {{ user.username|capfirst }}                      
+                    <img src="{{ MEDIA_URL }}{{ user.avatar }}" class="img-circle" alt="User Image" > 
+                     <p>
+                       {{ user.username|capfirst }} {{ user.last_name|capfirst }}
+                  
                     </p>
                   </li>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
+  
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="{% url 'users_app:logout' %}" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>
@@ -257,7 +247,7 @@
             <img src="{{ MEDIA_URL }}{{ user.avatar }}" class="img-circle" alt="User Image" > 
             </div>
             <div class="pull-left info">
-              <p>{{ user.username|capfirst }}</p>
+              <p>{{ user.username|capfirst }} {{ user.last_name|capfirst }}</p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
