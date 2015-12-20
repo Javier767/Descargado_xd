@@ -124,10 +124,10 @@
                         var html = ""
                         if(data.length != 0){
                             for (var i = 0; i < data.length; i++) {
-                                html += '<strong>Producto</strong><br>';
+                                html += '<br><strong>Medicamentos</strong><br>';
                                 html += 'Serial: ' + data[i].pk + '<br>';
                                 html += 'Nombre: ' + data[i].fields.nombre + '<br>';
-                                html += 'precio_venta: ' + data[i].fields.precio_venta + '<br>';
+                                html += 'Precio Venta: ' + data[i].fields.precio_venta + '<br>';
                                 html += 'stock: ' + data[i].fields.stock + '<br>';
                                 html += '<input name="p-cantidad" id="p-cantidad" placeholder="Cantidad" type="text">';
 
@@ -144,7 +144,7 @@
                             $('#producto-resultado').html(html); 
                             $("#p-seleccionar").attr("disabled", false);
                         }else{
-                            html += '<strong>No existe producto con ese code</strong><br>';
+                            html += '<strong>No existe Medicamento con ese code</strong><br>';
                             //html += '<a class="btn btn-primary" style="margin-right: 5px;" href=""> Crear Producto</a>';
                             
                             $("#p-seleccionar").attr("disabled", true);

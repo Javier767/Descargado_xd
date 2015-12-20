@@ -107,7 +107,7 @@ def generar_reporte_lista_compras(request):
         if formbusqueda.is_valid():
             fecha_in = formbusqueda.cleaned_data['fecha_i']
             fecha_fi = formbusqueda.cleaned_data['fecha_f']
-            rango = Cabecera.objects.filter(fecha__range=(fecha_in, fecha_fi)).order_by('trabajador')
+            rango = Cabecera.objects.filter(fecha__gte=(fecha_in), fecha__lte=(fecha_fi)).order_by('trabajador')
             return write_pdf ('compras/reporte_detalle_lista_compras.html',{'pagesize' : 'legal', 'rango' : rango})
             #return render_to_response ('empleados/test.html',{'rango':rango},context_instance=RequestContext(request))
         else:
