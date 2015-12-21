@@ -29,7 +29,7 @@ class DetalleView(DetailView):
 	template_name = 'medicamentos/detalle_medicamentos.html'
 
 class ActualizarView(UpdateView):
-	form_class = MedicamentoForm
+	form_class = CrearmedicamentoForm
 	template_name = 'medicamentos/create_update_medicamentos.html'
 	model = Medicamentos
 	success_url='/medicamentos'

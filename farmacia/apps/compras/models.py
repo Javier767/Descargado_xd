@@ -9,8 +9,8 @@ from django.conf import settings
 # Create your models here.
 class TimeStampModel(models.Model):
 
-	created = models.DateTimeField(auto_now_add=True)
-	modified = models.DateTimeField(auto_now=True)
+	created = models.DateField(auto_now_add=True)
+	modified = models.DateField(auto_now=True)
 
 	class Meta:
 		abstract = True
@@ -22,7 +22,7 @@ class Cabecera(TimeStampModel):
 	codigo = models.CharField(max_length=10, unique=True)
 	distribuidor = models.ForeignKey(Distribuidor)
 	laboratorio = models.ForeignKey(Laboratorio)
-	fecha = models.DateTimeField(auto_now_add=True)
+	fecha = models.DateField(auto_now_add=True)
 
 	def __unicode__(self):
 		return self.codigo

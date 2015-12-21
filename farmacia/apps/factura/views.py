@@ -18,6 +18,22 @@ from django.contrib import messages
 
 from django.views.generic import ListView
 
+from django.template import RequestContext as ctx
+
+
+#reporte pdf
+from django.http import HttpResponseRedirect
+from datetime import *
+import xhtml2pdf.pisa as pisa
+from django import http
+from django.template.loader import get_template
+from django.template import Context
+import cStringIO as StringIO
+import cgi
+
+from .forms import RangoForm
+
+
 @login_required
 @transaction.atomic
 def facturaCrear(request):
@@ -139,3 +155,38 @@ class ListaVentas(ListView):
         context['compras'] = context['events']
         context['paginate_by']=context['events']
         return context
+
+
+
+def write_pdf(template_src, context_dict):
+    template = get_template(template_src)
+    context = Context(context_dict)
+    html  = template.render(context)
+    result = StringIO.StringIO()
+    pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result)
+    if not pdf.err:
+        return http.HttpResponse(result.getvalue(), \
+            content_type='application/pdf')
+    return http.HttpResponse('Ocurrio un error al genera el reporte %s' % cgi.escape(html))
+
+@login_required(login_url='/login')
+def generar_pdf(request):
+    factura = Factura.objects.all()
+
+    if request.method == "POST":
+        formbusqueda = RangoForm(request.POST)
+        if formbusqueda.is_valid():
+            fecha_in = formbusqueda.cleaned_data['fecha_i']
+            fecha_fi = formbusqueda.cleaned_data['fecha_f']
+            rango = Factura.objects.filter(fecha__range=(fecha_in, fecha_fi))
+            total = 0
+            for expe in rango:
+                total = ((expe.total) + (total))
+
+            return write_pdf ('factura/reporte_factura.html',{'pagesize' : 'legal', 'rango' : rango, 'total': total})
+            #return render_to_response ('empleados/test.html',{'rango':rango},context_instance=RequestContext(request))
+        else:
+            error = "Hay un error en las fechas proporcionadas"
+            return render_to_response('factura/rango_reporte.html', {'error': error}, context_instance=RequestContext(request))
+
+    return render_to_response('factura/rango_reporte.html', {'rangoform': RangoForm()}, context_instance=RequestContext(request))

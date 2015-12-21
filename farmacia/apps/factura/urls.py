@@ -12,4 +12,7 @@ urlpatterns = patterns('',
 
     url(r'^factura/consultar$', 'apps.factura.views.consultarFactura', name="consultar_factura"),
 
+
+    url (r'factura/generar_reporte_factura/$', generar_pdf, name = 'generar_reporte_factura'),
+
    )

@@ -129,8 +129,35 @@ $(document).ready(function() {
 
                       <form class="form-horizontal" method="post">{% csrf_token %}  
                         <div class="section">
-                          {{ todo_list_form.as_p }}
-                        </div>  
+                           <div class="form-group has-success has-feedback  {% if todo_list_form.codigo.errors %} has-error {% endif %}">
+                                     <label class="control-label col-sm-1" for="inputSuccess3">{{ todo_list_form.codigo.label_tag }}
+                                     </label>                                     
+                                     <div class="col-sm-2">
+                                        {{ todo_list_form.codigo }}
+                                    </div>
+
+                                    <label class="control-label col-sm-1" for="inputSuccess3">{{ todo_list_form.distribuidor.label_tag }}
+                                     </label>
+                                    <div class="col-sm-2">
+                                        {{ todo_list_form.distribuidor }}                                        
+                                    </div>
+                                    <div class="col-sm-1">        
+                                      <a href="{% url 'distribuidores_app:create_distribuidor' %}" class="btn btn-success">+
+                                      </a> 
+                                    </div>  
+                                    <label class="control-label col-sm-1" for="inputSuccess3">{{ todo_list_form.laboratorio.label_tag }}
+                                     </label>
+                                    <div class="col-sm-2">
+                                        {{ todo_list_form.laboratorio }}
+                                    </div>
+                                    <div class="col-sm-1">        
+                                      <a href="{% url 'distribuidores_app:create_distribuidor' %}" class="btn btn-success">+
+                                      </a> 
+                                    </div>
+                            </div>                         
+                        </div>
+
+                        
                         
                           <div class="panel-body"> 
                             <div class="row">    

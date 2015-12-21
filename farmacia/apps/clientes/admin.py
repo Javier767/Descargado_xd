@@ -6,5 +6,5 @@ from .models import Cliente
 @admin.register(Cliente)
 
 class ClienteAdmin(admin.ModelAdmin):
-	list_display = ('dni', 'nombre','apellidos', 'distrito', 'provincia', 'departamento', 'direccion', 'telefono'  )
+	list_display = ('dni', 'nombre','apellidos', 'direccion', 'telefono'  )
 	search_fields = ('dni', 'nombre')

@@ -6,6 +6,14 @@ class TodoListForm(ModelForm):
   class Meta:
     model = Cabecera
     exclude =('trabajador',)
+    widgets = {
+    			'codigo': forms.TextInput(attrs={'class': 'form-control'}),
+				'distribuidor': forms.Select(attrs={'class': 'form-control'}),
+				'laboratorio': forms.Select(attrs={'class': 'form-control'}),
+				
+			}
+
+
 
 class TodoItemForm(forms.ModelForm):
 	class Meta:

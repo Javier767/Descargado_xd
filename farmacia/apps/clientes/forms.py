@@ -14,16 +14,7 @@ class ClienteForm(forms.ModelForm):
 		'size': '40'}))	
 	apellidos = forms.CharField(widget=forms.TextInput(attrs={
 		'placeholder':'Apellidos',
-		'size': '40'}))	
-	distrito = forms.CharField(widget=forms.TextInput(attrs={
-		'placeholder':'Distrito',
-		'size': '40'}))	
-	provincia = forms.CharField(widget=forms.TextInput(attrs={
-		'placeholder':'provincia',
-		'size': '40'}))	
-	departamento = forms.CharField(widget=forms.TextInput(attrs={
-		'placeholder':'departamento',
-		'size': '40'}))	
+		'size': '40'}))		
 	direccion = forms.CharField(widget=forms.TextInput(attrs={
 		'placeholder':'Direccion',
 		'size': '40'}))	

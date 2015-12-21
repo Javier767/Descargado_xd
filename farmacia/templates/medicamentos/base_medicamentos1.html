@@ -107,9 +107,9 @@
             {
               precio_compra =0;
             }   
-            $('#precio_venta').val(precio_compra*0.30 + precio_compra);
+            $('#precio_venta').val((precio_compra*0.30) + (precio_compra));
 
-           $('#igv').val(((precio_compra*0.30 + precio_compra)*0.18).toFixed(2));
+           $('#igv').val((((precio_compra*0.30) + (precio_compra))*0.18).toFixed(2));
            
           })
         }

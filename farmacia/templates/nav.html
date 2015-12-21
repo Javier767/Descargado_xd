@@ -44,7 +44,7 @@
                             <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                           </div>
                           <h4>
-                            AdminLTE Design Team
+                           Farma Salud
                             <small><i class="fa fa-clock-o"></i> 2 hours</small>
                           </h4>
                           <p>Why not buy a new awesome theme?</p>
@@ -255,6 +255,10 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
+
+         {% for group in user.groups.all %}
+           {% if group.name == 'administrador' %}
+            
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-child"></i> <span>Clientes</span> <i class="fa fa-angle-left pull-right"></i>
@@ -264,6 +268,29 @@
                 <li><a href="{% url 'clientes_app:create_clientes' %}"><i class="fa fa-save"></i><small class="label pull-right bg-green">Nuevo</small>Nuevo</a></li>
               </ul>
             </li>
+            {% endif %}
+            {% endfor %}
+
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-child"></i> <span>Distribuidores</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="{% url 'distribuidores_app:lista_distribuidores' %}"><i class="fa fa-check-square"></i> Lista</a></li>
+                <li><a href="{% url 'distribuidores_app:create_distribuidor' %}"><i class="fa fa-save"></i><small class="label pull-right bg-green">Nuevo</small>Nuevo</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-child"></i> <span>Laboratorios</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="{% url 'laboratorios_app:lista_laboratorios' %}"><i class="fa fa-check-square"></i> Lista</a></li>
+                <li><a href="{% url 'laboratorios_app:create_laboratorios' %}"><i class="fa fa-save"></i><small class="label pull-right bg-green">Nuevo</small>Nuevo</a></li>
+              </ul>
+            </li>
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-medkit"></i>
@@ -302,6 +329,7 @@
                
                 <li><a href="{% url 'factura_app:factura_venta' %}"><i class="fa fa-circle-o"></i> Realizar Venta</a></li>
                 <li><a href="{% url 'factura_app:consultar_factura' %}"><i class="fa fa-circle-o"></i> Consultar Venta</a></li>
+                <li><a href="{% url 'factura_app:generar_reporte_factura' %}"><i class="fa fa-circle-o"></i> Reporte Venta</a></li>
                
               </ul>
             </li>

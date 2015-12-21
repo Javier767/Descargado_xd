@@ -20,6 +20,10 @@ urlpatterns = patterns('',
     #CLientes
     url(r'^', include('apps.clientes.urls',  namespace='clientes_app')),
 
+
+ #Distribuidores
+    url(r'^', include('apps.distribuidor.urls',  namespace='distribuidores_app')),
+
         #compras
     url(r'^', include('apps.compras.urls',  namespace='compras_app')),
        #compras

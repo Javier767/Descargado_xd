@@ -13,7 +13,7 @@ class Factura(models.Model):
     serie = models.IntegerField()
     numero = models.CharField(max_length=6)
     cliente = models.ForeignKey(Cliente, null=True, blank=True)
-    fecha = models.DateTimeField(auto_now_add=True)
+    fecha = models.DateField(auto_now_add=True)
     total = models.DecimalField(
         max_digits=8, decimal_places=2, null=True, blank=True)
     vendedor = models.ForeignKey(settings.AUTH_USER_MODEL)

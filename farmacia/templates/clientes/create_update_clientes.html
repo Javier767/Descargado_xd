@@ -57,25 +57,8 @@
                                             <input type="text" id="disabledTextInput" name="apellidos" class="form-control" value='{% if form.apellidos.value %}{{ form.apellidos.value }}{% endif %}' data-toggle="tooltip" data-placement="top" title='{{ form.apellidos.errors.as_text}}' autofocus='true'>                                       
                                         </div>
                                     </div> 
-
-                                    <div class="form-group has-success has-feedback  {% if form.distrito.errors %} has-error {% endif %}">
-                                        <label class="control-label col-sm-2" for="inputSuccess3">{{ form.distrito.label_tag }}</label>
-                                        <div class="col-sm-6">                                        
-                                            <input type="text" id="disabledTextInput" name="distrito" class="form-control" value='{% if form.distrito.value %}{{ form.distrito.value }}{% endif %}' data-toggle="tooltip" data-placement="top" title='{{ form.distrito.errors.as_text}}' autofocus='true'>                                       
-                                        </div>
-                                    </div> 
-                                    <div class="form-group has-success has-feedback  {% if form.provincia.errors %} has-error {% endif %}">
-                                        <label class="control-label col-sm-2" for="inputSuccess3">{{ form.provincia.label_tag }}</label>
-                                        <div class="col-sm-6">                                        
-                                            <input type="text" id="disabledTextInput" name="provincia" class="form-control" value='{% if form.provincia.value %}{{ form.provincia.value }}{% endif %}' data-toggle="tooltip" data-placement="top" title='{{ form.provincia.errors.as_text}}' autofocus='true'>                                       
-                                        </div>
-                                    </div> 
-                                    <div class="form-group has-success has-feedback  {% if form.departamento.errors %} has-error {% endif %}">
-                                        <label class="control-label col-sm-2" for="inputSuccess3">{{ form.departamento.label_tag }}</label>
-                                            <div class="col-sm-6">                                        
-                                                <input type="text" id="disabledTextInput" name="departamento" class="form-control" value='{% if form.departamento.value %}{{ form.departamento.value }}{% endif %}' data-toggle="tooltip" data-placement="top" title='{{ form.departamento.errors.as_text}}' autofocus='true'>                                       
-                                            </div>
-                                    </div>   
+                                   
+  
                                     <div class="form-group has-success has-feedback  {% if form.direccion.errors %} has-error {% endif %}">
                                         <label class="control-label col-sm-2" for="inputSuccess3">{{ form.direccion.label_tag }}</label>
                                         <div class="col-sm-6">                                        

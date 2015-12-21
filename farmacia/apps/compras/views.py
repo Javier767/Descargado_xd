@@ -73,7 +73,6 @@ class ListaCompras(ListView):
         context = super(ListaCompras, self).get_context_data(**kwargs)
         context['events'] =Cabecera.objects.filter(trabajador=self.request.user)
         context['compras'] = context['events']
-        context['paginate_by']=context['events']
         return context
 
 

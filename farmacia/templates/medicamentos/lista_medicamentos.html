@@ -78,7 +78,12 @@
                               <td class="text-right">
                                   <a href="{% url 'medicamentos_app:detalle_medicamentos' m.id %} " class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
                                   <a href="{% url 'medicamentos_app:actualizar_medicamentos' m.id  %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                  {% for group in user.groups.all %}
+                                    {% if group.name == 'administrador' %}
+
                                   <a href="{% url 'medicamentos_app:eliminar_medicamentos' m.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a> 
+                                  {% endif %}
+                                  {% endfor %}
                               </td>
                           </tr>
                       {% endfor %}
