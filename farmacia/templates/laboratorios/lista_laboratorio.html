@@ -37,7 +37,7 @@
                    <thead>
                             <tr>
                              <th>N°</th>
-                              <th>Codigo</th>                       
+                              <th>Código</th>                       
                               <th>Nombre</th> 
                               <th>Sanitario</th>                              
                               <th>Autorizacion</th> 
@@ -60,7 +60,11 @@
                                   {% endif %}
 
                                   <a href="{% url 'laboratorios_app:actualizar_laboratorios' l.id  %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                  {% for group in user.groups.all %}
+                                      {% if group.name == 'administrador' %}
                                   <a href="{% url 'laboratorios_app:eliminar_laboratorios' l.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a> 
+                                    {% endif %}
+                                    {% endfor %}
                               </td>
                           </tr>
                       {% endfor %}

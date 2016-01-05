@@ -27,8 +27,7 @@ class Cabecera(TimeStampModel):
 	def __unicode__(self):
 		return self.codigo
 		
-	def get_imprimir_url(self):
-		return reverse("compras_app:reporte_compras", kwargs={"pk": self.pk})
+
 
 
 class DetalleCompra(models.Model):

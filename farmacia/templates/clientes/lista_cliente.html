@@ -41,7 +41,7 @@
                         <th>DNI</th>                       
                         <th>Nombre</th> 
                         <th>Apellidos</th>                              
-                        <th>Telefono</th>
+                        <th>Teléfono</th>
                         <th>Acciones</th>                       
                       </tr>
                     </thead>
@@ -61,7 +61,11 @@
                                   {% endif %}
 
                                   <a href="{% url 'clientes_app:actualizar_clientes' clientes.id  %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                  {% for group in user.groups.all %}
+                                     {% if group.name == 'administrador' %}
                                   <a href="{% url 'clientes_app:eliminar_cliente' clientes.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a> 
+                                   {% endif %}
+                                   {% endfor %}
                             </td>                      
                               
                           </tr>

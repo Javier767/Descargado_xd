@@ -37,12 +37,11 @@
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                      <tr>
-                        <th>N°</th>
-                        <th>Código</th>                       
+                        <th>N°</th>                      
                         <th>Nombre</th> 
                         <th>Ruc</th>                              
                         <th>Dirección</th>
-                        <th>Télefono</th>
+                        <th>Teléfono</th>
                         <th>Acciones</th>                       
                       </tr>
                     </thead>
@@ -50,8 +49,7 @@
                     
                      {% for d in distribuidores %} 
                         <tr> 
-                          <td>{{ forloop.counter}}</td>
-                          <td>{{ d.codigo }}</td>
+                          <td>{{ forloop.counter}}</td>                         
                           <td>{{ d.nombre }} </td> 
                           <td>{{ d.ruc }}</td>                              
                           <td>{{ d.direccion}}</td>
@@ -62,7 +60,11 @@
                                   {% endif %}
 
                                   <a href="{% url 'distribuidores_app:actualizar_distribuidores' d.id  %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                  {% for group in user.groups.all %}
+                                     {% if group.name == 'administrador' %}
                                   <a href="{% url 'distribuidores_app:eliminar_distribuidor' d.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a> 
+                                  {% endif %}
+                                  {% endfor %}
                             </td>                      
                               
                           </tr>

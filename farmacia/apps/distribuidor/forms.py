@@ -5,10 +5,7 @@ from apps.distribuidor.models import Distribuidor
 class DistribuidorForm(forms.ModelForm):
 	class Meta:
 		model = Distribuidor
-
-	codigo = forms.CharField(widget=forms.NumberInput(attrs={
-		'placeholder': 'DNI',
-		'size': '8'}))
+	
 	nombre = forms.CharField(widget=forms.TextInput(attrs={
 		'placeholder':'Nombre Distribuidor',
 		'size': '40'}))	

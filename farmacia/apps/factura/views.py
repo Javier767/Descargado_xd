@@ -1,4 +1,6 @@
-from django.shortcuts import render
+# -*- coding: utf-8 -*-
+from django.shortcuts import render_to_response 
+from django.shortcuts import render_to_response as render
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response, redirect
@@ -15,11 +17,9 @@ from apps.clientes.models import Cliente
 from apps.medicamentos.models import Medicamentos
 from django.db import transaction
 from django.contrib import messages
-
 from django.views.generic import ListView
-
 from django.template import RequestContext as ctx
-
+from datetime import datetime
 
 #reporte pdf
 from django.http import HttpResponseRedirect
@@ -156,8 +156,6 @@ class ListaVentas(ListView):
         context['paginate_by']=context['events']
         return context
 
-
-
 def write_pdf(template_src, context_dict):
     template = get_template(template_src)
     context = Context(context_dict)
@@ -175,10 +173,13 @@ def generar_pdf(request):
 
     if request.method == "POST":
         formbusqueda = RangoForm(request.POST)
+        vendedor = request.POST.get('vendedor')
+        
         if formbusqueda.is_valid():
             fecha_in = formbusqueda.cleaned_data['fecha_i']
             fecha_fi = formbusqueda.cleaned_data['fecha_f']
-            rango = Factura.objects.filter(fecha__range=(fecha_in, fecha_fi))
+            rango = Factura.objects.filter(fecha__range=(fecha_in, fecha_fi)).filter(vendedor__pk=request.user.id)
+          
             total = 0
             for expe in rango:
                 total = ((expe.total) + (total))
@@ -190,3 +191,11 @@ def generar_pdf(request):
             return render_to_response('factura/rango_reporte.html', {'error': error}, context_instance=RequestContext(request))
 
     return render_to_response('factura/rango_reporte.html', {'rangoform': RangoForm()}, context_instance=RequestContext(request))
+
+
+def reporteventas(request, pk):
+    compra = Factura.objects.get(pk=pk)
+    medicamentos = compra.factura.all()
+    hora = datetime.today()
+
+    return render('factura/reporte_venta.html', locals(), context_instance=ctx(request))

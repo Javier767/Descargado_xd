@@ -14,8 +14,7 @@
           <ol class="breadcrumb">
             <li><a href="{% url 'users_app:home' %}"><i class="fa fa-dashboard"></i>Inicio</a></li>
             <li class="active">Ventas</li>
-            <li><a href="{% url 'factura_app:factura_venta' %}">Nuevo</a></li>
-            
+            <li><a href="{% url 'factura_app:factura_venta' %}">Nuevo</a></li>         
           </ol>
         </section>
 
@@ -58,7 +57,7 @@
                               <td>{{ c.total}}</td>                      
                               <td class="text-right">
                                   {% if user.is_authenticated %}
-                                  <a href="{% url 'factura_app:consultar_factura'  %}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                  <a href="{% url 'factura_app:reporte_ventas' c.id  %}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
                                   {% endif %} 
                               </td>
                           </tr>

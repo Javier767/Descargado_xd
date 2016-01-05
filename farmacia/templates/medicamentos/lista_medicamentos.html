@@ -29,8 +29,12 @@
                       <a href="{% url 'medicamentos_app:create_medicamentos' %}" class="btn btn-success">
                       Nuevo
                       </a>
+                      {% for group in user.groups.all %}
+                        {% if group.name == 'administrador' %}
                       <a  class="btn btn-primary pull-right" href="/medicamentos/reporte">imprimir</a>
-                      <a  class="btn btn-primary pull-right" href="/expatenciones">Enviar Exportar excel</a>
+                       {% endif %}
+                       {% endfor %}
+                      
                     </h3>
                     <div class="box-tools pull-right">
                       <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -41,7 +45,7 @@
                         <thead>
                             <tr>
                              <th>N°</th>                                                     
-                              <th>presentacion</th> 
+                              <th>Presentacion</th> 
                               <th>Tipo</th>                              
                               <th>Nombre</th> 
                               <th>Precio</th>

@@ -37,13 +37,7 @@
                         <form class="form-horizontal" method="post">
                             {% csrf_token %} 
                             <div class="row">                              
-                                <div class="col-xs-12 col-sm-10">                               
-                                    <div class="form-group has-success has-feedback  {% if form.codigo.errors %} has-error {% endif %}">
-                                        <label class="control-label col-sm-2" for="inputSuccess3">{{ form.codigo.label_tag }}</label>
-                                        <div class="col-sm-6">               
-                                            <input type="text" name="codigo" class="form-control" value='{% if form.codigo.value %}{{ form.codigo.value }}{% endif %}' data-toggle="tooltip" data-placement="top" title='{{ form.codigo.errors.as_text}}' autofocus='true' id="disabledInput" type="text" >                                          
-                                        </div>
-                                    </div> 
+                                <div class="col-xs-12 col-sm-10">  
                                      
                                     <div class="form-group has-success has-feedback  {% if form.nombre.errors %} has-error {% endif %}">
                                         <label class="control-label col-sm-2" for="inputSuccess3">{{ form.nombre.label_tag }}</label>

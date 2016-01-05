@@ -15,4 +15,6 @@ urlpatterns = patterns('',
 
     url (r'factura/generar_reporte_factura/$', generar_pdf, name = 'generar_reporte_factura'),
 
+    url(r'factura/reporte_ventas/(?P<pk>\d+)/$', 'apps.factura.views.reporteventas', name='reporte_ventas'),
+
    )
